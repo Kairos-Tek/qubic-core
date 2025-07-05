@@ -9,12 +9,16 @@ struct HM25 : public ContractBase
 public:
     struct proc01_input{};
     struct proc01_output{};
+    
     struct proc02_input{};
     struct proc02_output{};
+    
     struct proc03_input{};
     struct proc03_output{};
+    
     struct proc04_input{};
     struct proc04_output{};
+    
     struct proc05_input{};
     struct proc05_output{};
 
@@ -24,6 +28,30 @@ public:
         uint64 var1;
     };
     
+    struct func02_input{};
+    struct func02_output
+    {
+        uint64 var2;
+    };
+
+    struct func03_input{};
+    struct func03_output
+    {
+        uint64 var3;
+    };
+
+    struct func04_input{};
+    struct func04_output
+    {
+        uint64 var4;
+    };
+
+    struct func05_input{};
+    struct func05_output
+    {
+        uint64 var5;
+    };
+
 private:
     uint64 var1;
     uint64 var2;
@@ -55,6 +83,22 @@ private:
         output.var1 = state.var1;
     _
 
+    PUBLIC_FUNCTION(func02)
+        output.var2 = state.var2;
+    _
+
+    PUBLIC_FUNCTION(func03)
+        output.var3 = state.var3;
+    _
+
+    PUBLIC_FUNCTION(func04)
+        output.var4 = state.var4;
+    _
+
+    PUBLIC_FUNCTION(func05)
+        output.var5 = state.var5;
+    _
+
     REGISTER_USER_FUNCTIONS_AND_PROCEDURES
 
         REGISTER_USER_PROCEDURE(proc01, 1);
@@ -64,6 +108,10 @@ private:
         REGISTER_USER_PROCEDURE(proc05, 5);
 
         REGISTER_USER_FUNCTION(func01, 1);
+        REGISTER_USER_FUNCTION(func02, 2);
+        REGISTER_USER_FUNCTION(func03, 3);
+        REGISTER_USER_FUNCTION(func04, 4);
+        REGISTER_USER_FUNCTION(func05, 5);
     _
 
     INITIALIZE
