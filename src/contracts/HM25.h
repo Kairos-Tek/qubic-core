@@ -21,7 +21,7 @@ public:
     };
     
 private:
-    uint64 lastMilestone;
+    uint64 var1;
 
     PUBLIC_PROCEDURE(proc01)
         state.var1++;
