@@ -7,34 +7,38 @@ struct HM252
 struct HM25 : public ContractBase
 {
 public:
-    struct SetMilestone_input{};
-    struct SetMilestone_output{};
+    struct _input{};
+    struct proc01_output{};
+    struct proc02_output{};
+    struct proc03_output{};
+    struct proc04_output{};
+    struct proc05_output{};
 
-    struct GetMilestone_input{};
-    struct GetMilestone_output
+    struct func01_input{};
+    struct func01_output
     {
-        uint64 lastMilestone;
+        uint64 var1;
     };
     
 private:
     uint64 lastMilestone;
 
-    PUBLIC_PROCEDURE(SetMilestone)
-        state.lastMilestone++;
+    PUBLIC_PROCEDURE(proc01)
+        state.var1++;
    _
 
-    PUBLIC_FUNCTION(GetMilestone)
-        output.lastMilestone = state.lastMilestone;
+    PUBLIC_FUNCTION(func01)
+        output.var1 = state.var1;
     _
 
     REGISTER_USER_FUNCTIONS_AND_PROCEDURES
 
-        REGISTER_USER_PROCEDURE(SetMilestone, 1);
+        REGISTER_USER_PROCEDURE(proc01, 1);
 
-        REGISTER_USER_FUNCTION(GetMilestone, 1);
+        REGISTER_USER_FUNCTION(func01, 1);
     _
 
     INITIALIZE
-        state.lastMilestone = 0;
+        state.var1 = 0;
     _
 };
