@@ -1,18 +1,25 @@
-#include "HM25.h"
+#include "TestBank.h"
 
 using namespace QPI;
     
-    Collection<UserBalance, 1000000> userBalances;
-    id admin;
-    uint64 totalDeposits;
-    bool reentrancyLock;
+Collection<UserBalance, 1000000> userBalances;
+id admin;
+uint64 totalDeposits;
+bool reentrancyLock;
 
-    PUBLIC_PROCEDURE(Deposit)
-        // VULNERABILITY 1: No invocationReward validation
-        auto reward = qpi.invocationReward();
+void deposit();
+void withdraw();
+void transfer();
+void getBalance();
+void adminWithdraw();
+
+
+PUBLIC_PROCEDURE(Deposit)
+    // VULNERABILITY 1: No invocationReward validation
+    auto reward = qpi.invocationReward();
         
-        // VULNERABILITY 2: Integer overflow potential
-        auto& userBalance = getUserBalance(qpi.invocator());
+    // VULNERABILITY 2: Integer overflow potential
+    auto& userBalance = getUserBalance(qpi.invocator());
         userBalance.balance += input.amount;
         totalDeposits += input.amount;
         
