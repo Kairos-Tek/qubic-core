@@ -1,6 +1,10 @@
 using namespace QPI;
 
-struct TestBank : public ContractBase
+struct HM252
+{
+};
+
+struct HM25 : public ContractBase
 {
 public:
     struct Deposit_input
