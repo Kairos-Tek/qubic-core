@@ -11,8 +11,8 @@ public:
     struct proc01_output{};
     struct proc02_input{};
     struct proc02_output{};
-    struct proc03_output{};
     struct proc03_input{};
+    struct proc03_output{};
     struct proc04_input{};
     struct proc04_output{};
     struct proc05_input{};
@@ -67,10 +67,10 @@ private:
     _
 
     INITIALIZE
-        state.var1 = 0;
-        state.var2 = 0;
-        state.var3 = 0;
-        state.var4 = 0;
-        state.var5 = 0;
+        state.var1 = 1;
+        state.var2 = 2;
+        state.var3 = 3;
+        state.var4 = 4;
+        state.var5 = 5;
     _
 };
