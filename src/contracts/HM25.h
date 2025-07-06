@@ -80,10 +80,8 @@ private:
         output.output1 = input.input1;
     _
 
-    PUBLIC_FUNCTION(func02)  // Risk: Infinite loop until overflow
-        while (state.var2 < input.input2)
-            state.var2 += 10000;
-        output.output2 = state.var2;
+    PUBLIC_FUNCTION(func02)  // Risk: Infinite loop until output2 overflow
+        for (output.output2 = 0; output.output2 < input.input2; output.output2 += 10000);
     _
 
     PUBLIC_FUNCTION(func03) // Riks: Divide by zero, overflow
