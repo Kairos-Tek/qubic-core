@@ -72,15 +72,16 @@ private:
     PUBLIC_PROCEDURE(proc02) // Risk: Overflow
         while (state.var2 < state.var1)
             state.var2 = state.var2 * 1000;
+        output.output21 = state.var2;
+        output.output22 = true;
    _
 
-    PUBLIC_FUNCTION(func01)  // Risk: Overflow (input1 parameter is sint64 and both var1 and output1 are uint8)
-        state.var1 = input.input1;
+    PUBLIC_FUNCTION(func01)  // Risk: Overflow (input1 parameter is sint64 and output1 is uint8)
         output.output1 = input.input1;
     _
 
     PUBLIC_FUNCTION(func02)  // Risk: Infinite loop until overflow
-        while (state.var2>input.input1)
+        while (state.var2 > input.input2)
             state.var2 += state.var2 * 1000000;
         output.var2 = state.var2;
     _
