@@ -26,7 +26,7 @@ public:
     };
     
     struct proc02_input{};
-    struct func02_output
+    struct proc02_output
     {
         uint8 output21;
         bool output22;
