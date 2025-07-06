@@ -75,12 +75,12 @@ private:
 
     PUBLIC_PROCEDURE(proc04) // Infinite call between proc04 and proc05
         state.var4++;
-        proc05();
+        // proc05();
    _
 
     PUBLIC_PROCEDURE(proc05)
         state.var5++;
-        proc04();
+        // proc04();
    _
 
     PUBLIC_FUNCTION(func01)  // Overflow
@@ -97,11 +97,11 @@ private:
     _
 
     PUBLIC_FUNCTION(func04) // Infinite call between func04 and func05
-        output.var4 = func05(0);
+        output.var4 = func05();
     _
 
     PUBLIC_FUNCTION(func05)
-        output.var5 = func04(0);
+        output.var5 = func04();
     _
 
     REGISTER_USER_FUNCTIONS_AND_PROCEDURES
