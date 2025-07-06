@@ -98,12 +98,12 @@ private:
 
     PUBLIC_FUNCTION(func04) // Infinite call between func04 and func05
         output.var4++;
-        return func05();
+        //return func05();
     _
 
     PUBLIC_FUNCTION(func05)
         output.var5++;
-        return func04();
+        //return func04();
     _
 
     REGISTER_USER_FUNCTIONS_AND_PROCEDURES
