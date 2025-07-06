@@ -53,14 +53,15 @@ public:
     };
 
 private:
+    uint64 var0;
     uint64 var1;
     uint64 var2;
     uint64 var3;
     uint64 var4;
     uint64 var5;
 
-    PUBLIC_PROCEDURE(proc01) // Overflow
-        state.var1 = state.var2 + state.var3 + state.var4 + state.var5;
+    PUBLIC_PROCEDURE(proc01) // Overflow risk
+        state.var1 = state.var1 * state.var2 * state.var3 * state.var4 * state.var5;
    _
 
     PUBLIC_PROCEDURE(proc02) // Infinite loop until overflow
@@ -96,11 +97,11 @@ private:
     _
 
     PUBLIC_FUNCTION(func04) // Infinite call between func04 and func05
-        output.var4 = func05();
+        output.var4 = func05(0);
     _
 
     PUBLIC_FUNCTION(func05)
-        output.var5 = func04();
+        output.var5 = func04(0);
     _
 
     REGISTER_USER_FUNCTIONS_AND_PROCEDURES
