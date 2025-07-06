@@ -59,44 +59,48 @@ private:
     uint64 var4;
     uint64 var5;
 
-    PUBLIC_PROCEDURE(proc01)
-        state.var1++;
+    PUBLIC_PROCEDURE(proc01) // Overflow
+        state.var1 = state.var2 + state.var3 + state.var4 + state.var5;
    _
 
-    PUBLIC_PROCEDURE(proc02)
-        state.var2++;
+    PUBLIC_PROCEDURE(proc02) // Infinite loop until overflow
+        while (state.var2>0)
+            state.var2 = state.var2 * 1000000;
    _
 
-    PUBLIC_PROCEDURE(proc03)
-        state.var3++;
+    PUBLIC_PROCEDURE(proc03) // Divide by zero
+        state.var3 = state.var1 / state.var0;
    _
 
-    PUBLIC_PROCEDURE(proc04)
+    PUBLIC_PROCEDURE(proc04) // Infinite call between proc04 and proc05
         state.var4++;
+        proc05();
    _
 
     PUBLIC_PROCEDURE(proc05)
         state.var5++;
+        proc04();
    _
 
-    PUBLIC_FUNCTION(func01)
-        output.var1 = state.var1;
+    PUBLIC_FUNCTION(func01)  // Overflow
+        output.var1 = state.var2 + state.var3 + state.var4 + state.var5;
     _
 
-    PUBLIC_FUNCTION(func02)
-        output.var2 = state.var2;
+    PUBLIC_FUNCTION(func02)  // Infinite loop until overflow
+        while (state.var2>0)
+            output.var2 += state.var2 * 1000000;
     _
 
-    PUBLIC_FUNCTION(func03)
-        output.var3 = state.var3;
+    PUBLIC_FUNCTION(func03) // Divide by zero
+        output.var3 = state.var3 / state.var0;
     _
 
-    PUBLIC_FUNCTION(func04)
-        output.var4 = state.var4;
+    PUBLIC_FUNCTION(func04) // Infinite call between func04 and func05
+        output.var4 = func05();
     _
 
     PUBLIC_FUNCTION(func05)
-        output.var5 = state.var5;
+        output.var5 = func04();
     _
 
     REGISTER_USER_FUNCTIONS_AND_PROCEDURES
@@ -115,6 +119,7 @@ private:
     _
 
     INITIALIZE
+        state.var0 = 0;
         state.var1 = 1;
         state.var2 = 2;
         state.var3 = 3;
