@@ -81,9 +81,9 @@ private:
     _
 
     PUBLIC_FUNCTION(func02)  // Risk: Infinite loop until overflow
-        while (state.var2 > input.input2)
-            state.var2 += state.var2 * 1000000;
-        output.var2 = state.var2;
+        while (state.var2 < input.input2)
+            state.var2 += 10000;
+        output.output2 = state.var2;
     _
 
     PUBLIC_FUNCTION(func03) // Riks: Divide by zero, overflow
